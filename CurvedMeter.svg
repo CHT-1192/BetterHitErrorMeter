@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200">
+  <!-- CAD: 圆心(200,200) 黑24° 红27° 橙30° 黄45° 绿60° -->
+  <!-- 灰底 r=150.5 w=65 (118~183)  色环 r=152.75 w=12.5 (146.5~159) -->
+
+  <circle cx="200" cy="200" r="150.5" fill="none" stroke="#aaaaaa" stroke-width="65"
+    stroke-dasharray="346.7 598.9" stroke-dashoffset="409.8"/>
+
+  <circle cx="200" cy="200" r="152.75" fill="none" stroke="#ff0000" stroke-width="12.5"
+    stroke-dasharray="8.0 951.8" stroke-dashoffset="407.9"/>
+  <circle cx="200" cy="200" r="152.75" fill="none" stroke="#ff0000" stroke-width="12.5"
+    stroke-dasharray="8.0 951.8" stroke-dashoffset="80.0"/>
+
+  <circle cx="200" cy="200" r="152.75" fill="none" stroke="#ff6f4d" stroke-width="12.5"
+    stroke-dasharray="40.0 919.8" stroke-dashoffset="399.9"/>
+  <circle cx="200" cy="200" r="152.75" fill="none" stroke="#ff6f4d" stroke-width="12.5"
+    stroke-dasharray="40.0 919.8" stroke-dashoffset="120.0"/>
+
+  <circle cx="200" cy="200" r="152.75" fill="none" stroke="#fcff4d" stroke-width="12.5"
+    stroke-dasharray="40.0 919.8" stroke-dashoffset="359.9"/>
+  <circle cx="200" cy="200" r="152.75" fill="none" stroke="#fcff4d" stroke-width="12.5"
+    stroke-dasharray="40.0 919.8" stroke-dashoffset="160.0"/>
+
+  <circle cx="200" cy="200" r="152.75" fill="none" stroke="#5fff4e" stroke-width="12.5"
+    stroke-dasharray="160.0 799.8" stroke-dashoffset="319.9"/>
+
+  <line x1="200" y1="39" x2="200" y2="55" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+</svg>

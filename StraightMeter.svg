@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200">
+  <!--
+    Straight Error Meter
+    Pixel-accurate reconstruction from original PNG (StraightMeter-Transparent.png)
+    Only <rect> elements, no <path>, no <circle>, no rx.
+
+    Colors (standard):
+      Green  #5FFF4E  Perfect
+      Yellow #FCFF4D  EarlyPerfect / LatePerfect
+      Orange #FF6F4D  VeryEarly / VeryLate
+      Red    #FF0000  TooEarly / TooLate
+  -->
+
+  <!-- Black semi-transparent background bar (330x64, alpha=85/255 = 33% opacity) -->
+  <rect x="35" y="68" width="330" height="64" fill="#000000" opacity="0.333"/>
+
+  <!-- Green base strip (Perfect zone, 314x12) -->
+  <rect x="43" y="94" width="314" height="12" fill="#5FFF4E"/>
+
+  <!-- Yellow (EarlyPerfect / LatePerfect, 37x12) -->
+  <rect x="88"  y="94" width="37" height="12" fill="#FCFF4D"/>
+  <rect x="275" y="94" width="37" height="12" fill="#FCFF4D"/>
+
+  <!-- Orange (VeryEarly / VeryLate, 38x12) -->
+  <rect x="50"  y="94" width="38" height="12" fill="#FF6F4D"/>
+  <rect x="312" y="94" width="38" height="12" fill="#FF6F4D"/>
+
+  <!-- Red (TooEarly / TooLate, 7x12) -->
+  <rect x="43"  y="94" width="7" height="12" fill="#FF0000"/>
+  <rect x="350" y="94" width="7" height="12" fill="#FF0000"/>
+
+  <!-- Center white pointer line (4x20) -->
+  <rect x="198" y="90" width="4" height="20" fill="#FFFFFF"/>
+</svg>
