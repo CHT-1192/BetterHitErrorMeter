@@ -8,15 +8,15 @@ BetterHitErrorMeter — an ADOFAI (A Dance of Fire and Ice) UMM mod that improve
 
 ## Game Installation & Decompilation Tools
 
-- **Game path**: `C:\Users\Xuemin Chen\Projects\ADOFAI\A Dance of Fire and Ice\`
+- **Game path**: `<GamePath>\A Dance of Fire and Ice\`
 - **Managed DLLs**: `<GamePath>\A Dance of Fire and Ice_Data\Managed\` — contains `Assembly-CSharp.dll` (main game code), `Assembly-CSharp-firstpass.dll`, `RDTools.dll`, etc.
-- **dnSpy**: `C:\Users\Xuemin Chen\Projects\ADOFAI\dnSpy\dnSpy.Console.exe` — CLI decompiler for .NET assemblies
+- **dnSpy**: `<ToolsPath>\dnSpy\dnSpy.Console.exe` — CLI decompiler for .NET assemblies
   ```bash
   # Decompile a specific type from the game DLL:
-  cd "C:\Users\Xuemin Chen\Projects\ADOFAI\dnSpy"
-  ./dnSpy.Console.exe -t "ClassName" --no-color "C:\Users\Xuemin Chen\Projects\ADOFAI\A Dance of Fire and Ice\A Dance of Fire and Ice_Data\Managed\Assembly-CSharp.dll"
+  cd <ToolsPath>\dnSpy
+  ./dnSpy.Console.exe -t "ClassName" --no-color "<GamePath>\A Dance of Fire and Ice\A Dance of Fire and Ice_Data\Managed\Assembly-CSharp.dll"
   ```
-- **AssetRipper**: `C:\Users\Xuemin Chen\Projects\ADOFAI\AssetRipper\` — for extracting Unity assets/prefabs
+- **AssetRipper**: `<ToolsPath>\AssetRipper\` — for extracting Unity assets/prefabs
 
 ## Reference Repos
 

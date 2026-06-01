@@ -1,0 +1,8 @@
+{
+  "Id": "BetterHitErrorMeter",
+  "DisplayName": "BetterHitErrorMeter",
+  "Author": "CHT",
+  "Version": "0.1.0",
+"AssemblyName": "BetterHitErrorMeter.dll",
+  "EntryMethod": "BetterHitErrorMeter.Main.Load"
+}
