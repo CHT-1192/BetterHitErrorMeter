@@ -48,7 +48,7 @@ namespace BetterHitErrorMeter
         private static readonly Color32 ColWhite = new Color32(0xF8, 0xF8, 0xF8, 255);
         private static readonly Color32 ColTransparent = new Color32(0, 0, 0, 0);
 
-        public static Texture2D GenerateStraightMeter(float scale)
+        public static Texture2D GenerateStraight(float scale)
         {
             int w = Mathf.RoundToInt(SvgW * scale);
             int h = Mathf.RoundToInt(SvgH * scale);
@@ -86,7 +86,7 @@ namespace BetterHitErrorMeter
             return tex;
         }
 
-        public static Texture2D GenerateCurvedMeter(float scale)
+        public static Texture2D GenerateCurved(float scale)
         {
             int w = Mathf.RoundToInt(SvgW * scale);
             int h = Mathf.RoundToInt(SvgH * scale);

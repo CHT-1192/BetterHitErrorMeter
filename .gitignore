@@ -4,3 +4,5 @@ out/
 .vs/
 *.user
 .claude/
+# Contains local game path; users must edit after clone
+BetterHitErrorMeter.csproj

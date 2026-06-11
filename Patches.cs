@@ -9,9 +9,7 @@ namespace BetterHitErrorMeter
     {
         private static ErrorMeterSize _lastSize = ErrorMeterSize.Off;
         private static ErrorMeterShape _lastShape = (ErrorMeterShape)(-1);
-
-        // Store original sprites per instance so we can restore on toggle-off
-        private static readonly Dictionary<scrHitErrorMeter, (Sprite straight, Sprite curved)> _originals = new();
+        private static readonly Dictionary<scrHitErrorMeter, (Sprite? straight, Sprite? curved)> _originals = new();
 
         [HarmonyPatch(typeof(scrController), "Awake_Rewind")]
         [HarmonyPostfix]
@@ -42,9 +40,8 @@ namespace BetterHitErrorMeter
             foreach (var kv in _originals)
             {
                 if (kv.Key == null) continue;
-                var (straightSprite, curvedSprite) = kv.Value;
-                RestoreSingle(kv.Key.straightMeter, straightSprite);
-                RestoreSingle(kv.Key.curvedMeter, curvedSprite);
+                RestoreSingle(kv.Key.straightMeter, kv.Value.straight);
+                RestoreSingle(kv.Key.curvedMeter, kv.Value.curved);
             }
             _originals.Clear();
         }
@@ -62,29 +59,28 @@ namespace BetterHitErrorMeter
                 _ => 1.0f
             };
 
-            ReplaceSingle(instance, instance.straightMeter, MeterRenderer.GenerateStraightMeter(scale));
-            ReplaceSingle(instance, instance.curvedMeter, MeterRenderer.GenerateCurvedMeter(scale));
+            if (!_originals.ContainsKey(instance))
+                _originals[instance] = (null, null);
+
+            ReplaceSingle(instance, instance.straightMeter, MeterRenderer.GenerateStraight(scale), isStraight: true);
+            ReplaceSingle(instance, instance.curvedMeter, MeterRenderer.GenerateCurved(scale), isStraight: false);
         }
 
-        private static void ReplaceSingle(scrHitErrorMeter instance, GameObject? obj, Texture2D tex)
+        private static void ReplaceSingle(scrHitErrorMeter instance, GameObject? obj, Texture2D tex, bool isStraight)
         {
             if (obj == null) return;
             var img = obj.GetComponentInChildren<Image>();
             if (img == null) return;
 
-            // Save original if not already saved
-            if (!_originals.ContainsKey(instance))
-                _originals[instance] = (null!, null!);
-
             var entry = _originals[instance];
-            bool isStraight = obj == instance.straightMeter;
-            if (isStraight && entry.straight == null) entry = (img.sprite, entry.curved);
-            if (!isStraight && entry.curved == null) entry = (entry.straight, img.sprite);
-            _originals[instance] = entry;
+            if (isStraight && entry.straight == null)
+                _originals[instance] = (img.sprite, entry.curved);
+            else if (!isStraight && entry.curved == null)
+                _originals[instance] = (entry.straight, img.sprite);
 
             var old = img.sprite;
-            img.sprite = SpriteFromTexture(tex);
-            if (old != null && old != entry.straight && old != entry.curved)
+            img.sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 1f), 100f);
+            if (old != null && old != _originals[instance].straight && old != _originals[instance].curved)
                 Object.Destroy(old);
         }
 
@@ -93,15 +89,8 @@ namespace BetterHitErrorMeter
             if (obj == null || original == null) return;
             var img = obj.GetComponentInChildren<Image>();
             if (img == null) return;
+            img.material = null;
             img.sprite = original;
-        }
-
-        private static Sprite SpriteFromTexture(Texture2D tex)
-        {
-            return Sprite.Create(tex,
-                new Rect(0, 0, tex.width, tex.height),
-                new Vector2(0.5f, 1f),
-                100f);
         }
     }
 }
